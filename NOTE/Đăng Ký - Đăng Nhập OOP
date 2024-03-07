@@ -1,0 +1,26 @@
+1. Tạo route đường dẫn để đến login, register và logout (Đường Dẫn URL)
+2. Tạo Model "Thêm Người Dùng" (Tạo Tài Khoản) và Model "Đăng Nhập" (Check xem email và pass có trùng nhau không) (SQL Thêm Dữ Liệu)
+3. Tạo Controller điều khiển các các thao tác cũng như để render ra view, validate nữa (AuthenticateController) ($_SESSION['user']) (1. Validate -> 2. Gọi SQL -> 3. Renderview)
+4. Ra View và dùng các câu lệnh :if -> kiểm tra xem role có == 1 không thì mới hiển thị ra trang admin (Hiển Thị)
+5. Vào route để tạo route xác thực -> không phải role == 1 thì không được vào admin (Xác Thực Đường Dẫn)
+
+//* before ở đây là phải chạy route này trước để kiểm tra xem người dùng đã đăng nhập chưa mà vào trang admin
+//* /admin/* thì ngăn được mỗi người dùng không đăng nhập hoặc không có quyền vào trang chủ admin, không ngăn được người ta vào admin/users
+$router->before('GET|POST', '/admin/*', function () {
+    if (($_SESSION['user']['role']) == 0) {
+        header('Location: /');
+        exit();
+    }
+});
+
+//* Vậy nên phải có thêm /admin/.*
+$router->before('GET|POST', '/admin/.*', function () {
+    if (($_SESSION['user']['role']) == 0) {
+        header('Location: /');
+        exit();
+    }
+    // if (!isset($_SESSION['user'])) {
+    //     header('Location: /auth/login');
+    //     exit();
+    // }
+});

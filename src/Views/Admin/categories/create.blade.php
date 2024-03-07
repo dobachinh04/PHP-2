@@ -1,0 +1,43 @@
+@extends('layouts.master')
+
+@section('title')
+    Thêm Danh Mục
+@endsection
+
+@section('dashboard')
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <h1 class="h3 mb-2 text-gray-800">Thêm Mới Danh Mục</h1>
+
+        <div class="card shadow mb-4">
+            {{-- <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Thêm mới Danh Mục</h6>
+                            </div> --}}
+            <div class="card-body">
+                <div class="row m-auto">
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        <div>
+                            <label for="name" class="form-label">Tên Danh Mục:</label>
+                            <input type="text" class="form-control" id="name" required placeholder="Nhập Tên"
+                                name="name">
+                        </div>
+
+                        <div class="mt-3 mb-5">
+                            <label for="avatar" class="form-label">Ảnh:</label> <br>
+                            <input type="file" id="avatar" name="avatar">
+                        </div>
+                        <a href="/admin/categories" class="btn btn-secondary" style="color: white;"><-- Quay Lại Danh
+                                Sách</a>
+                                <button type="submit" class="btn btn-primary">Thêm Mới</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+
+    </div>
+    <!-- End of Main Content -->
+@endsection

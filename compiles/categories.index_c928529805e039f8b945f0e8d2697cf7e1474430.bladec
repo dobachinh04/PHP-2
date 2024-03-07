@@ -1,0 +1,125 @@
+<?php $_shouldextend[1]=1; ?>
+
+<?php $this->startSection('title'); ?>
+ Danh Mục
+<?php $this->stopSection(); ?>
+
+<?php $this->startSection('dashboard'); ?>
+ <!-- Begin Page Content -->
+ <div class="container-fluid">
+
+ <!-- Page Heading -->
+ <h1 class="h3 mb-2 text-gray-800">Bảng Danh Mục</h1>
+ <?php /* <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
+ For more information about DataTables, please visit the <a target="_blank"
+ href="https://datatables.net">official DataTables documentation</a>.</p> */ ?>
+
+ <!-- DataTales Example -->
+ <div class="card shadow mb-4">
+ <?php /* <div class="card-header py-3">
+ <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+ </div> */ ?>
+ <div class="card-body">
+ <div class="table-responsive">
+ <?php /* * Datatables */ ?>
+ <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+ <?php /* * Table Head */ ?>
+ <thead>
+ <tr>
+ <th>ID</th>
+ <th>Tên</th>
+ <th>Ảnh</th>
+ <th>Hành Động</th>
+ </tr>
+ </thead>
+
+ <?php /* * Table Body */ ?>
+ <tbody>
+ <?php $__currentLoopData = $categories; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $category): $loop = $this->incrementLoopIndices();  ?>
+ <tr>
+ <td> <?php echo \htmlentities($category['id']??'', ENT_QUOTES, 'UTF-8', false); ?> </td>
+ <td> <?php echo \htmlentities($category['name']??'', ENT_QUOTES, 'UTF-8', false); ?> </td>
+ <td> <img src="<?php echo \htmlentities($category['avatar']??'', ENT_QUOTES, 'UTF-8', false); ?>" width="200px"> </td>
+ <td style="text-align: center"><a class="btn btn-primary me-4"
+ href="/admin/categories/show/<?php echo \htmlentities($category['id']??'', ENT_QUOTES, 'UTF-8', false); ?>">Xem Chi
+ Tiết</a>
+ <a class="btn btn-warning"href="/admin/categories/update/<?php echo \htmlentities($category['id']??'', ENT_QUOTES, 'UTF-8', false); ?>">Sửa</a>
+ <a class="btn btn-danger" href="/admin/categories/delete/<?php echo \htmlentities($category['id']??'', ENT_QUOTES, 'UTF-8', false); ?>"
+ onclick="return confirm('Bạn có chắc là muốn xóa không?');">Xóa</a>
+ </td>
+ </tr>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </tbody>
+
+ <?php /* * Table Footer */ ?>
+ <tfoot>
+ <tr>
+ <th>ID</th>
+ <th>Tên</th>
+ <th>Ảnh</th>
+ <th>Hành Động</th>
+ </tr>
+ </tfoot>
+ </table>
+ </div>
+ </div>
+ </div>
+
+ </div>
+ <!-- /.container-fluid -->
+
+ </div>
+ <!-- End of Main Content -->
+<?php $this->stopSection(); ?>
+
+
+<?php /* *Đặt Code "Template" đã làm mà chưa ghép giao diện vào đây để ghép các biến vào giao diện và xuất ra  */ ?>
+<?php /* *Ví Dụ: */ ?>
+<?php /* <body>
+
+ <div class="container">
+ <h1>Danh sách <span style="color: red; font-weight: bold">Sản Phẩm</span></h1>
+
+ <div class="d-flex justify-content-between">
+ <a href="/admin/categories/create" class="btn btn-success" style="font-weight: bold; color: white;">Thêm
+ mới</a>
+ <a href="/admin/users/" class="btn btn-primary" style="font-weight: bold; color: white;">Danh Sách Người
+ Dùng</a>
+ <a href="/admin/categories/" class="btn btn-primary" style="font-weight: bold; color: white;">Danh Sách
+ Sản Phẩm</a>
+ <a href="/admin/posts/" class="btn btn-primary" style="font-weight: bold; color: white;">Danh Sách Bài
+ Viết</a>
+ </div>
+
+ <div class="row m-0 p-0">
+ <table class="table">
+ <tr>
+ <th>ID</th>
+ <th>Tên</th>
+ <th>Ảnh</th>
+ <th colspan="3" style="text-align: center">Hành Động</th>
+ </tr>
+
+ <?php $__currentLoopData = $categories; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $category): $loop = $this->incrementLoopIndices();  ?>
+ <tr>
+ <td> <?php echo \htmlentities($category['id']??'', ENT_QUOTES, 'UTF-8', false); ?> </td>
+ <td> <?php echo \htmlentities($category['name']??'', ENT_QUOTES, 'UTF-8', false); ?> </td>
+ <td> <img src="<?php echo \htmlentities($category['avatar']??'', ENT_QUOTES, 'UTF-8', false); ?>" width="100px"> </td>
+ <td style="text-align: center"><a class="btn btn-primary me-4"
+ href="/admin/categories/show/<?php echo \htmlentities($category['id']??'', ENT_QUOTES, 'UTF-8', false); ?>">Xem Chi Tiết</a>
+ <a class="btn btn-warning" href="/admin/categories/update/<?php echo \htmlentities($category['id']??'', ENT_QUOTES, 'UTF-8', false); ?>">Sửa</a>
+ <a class="btn btn-danger" href="/admin/categories/delete/<?php echo \htmlentities($category['id']??'', ENT_QUOTES, 'UTF-8', false); ?>"
+ onclick="return confirm('Bạn có chắc là muốn xóa không?');">Xóa</a>
+ </td>
+ </tr>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+
+ </table>
+ </div>
+ </div>
+
+</body> */ ?>
+
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('layouts.master'); } ?>
